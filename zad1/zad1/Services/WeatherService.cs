@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
 using zad1.Models;
 
@@ -9,14 +11,32 @@ public class WeatherService : IWeatherService
     private readonly string key = "0an4CX67gG7TkhAUyMNsJH3JGgAbCAdI";
     private readonly string language = "pl-pl";
     
-    public Task<List<Location>> AutocompleteSearchAsync(string query)
+    public async Task<List<Location>> AutocompleteSearchAsync(string query)
     {
-        throw new System.NotImplementedException();
+        using var client = new HttpClient();
+        var response = await client.GetAsync($"http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey={key}&q={query}&language={language}");
+
+        if (!response.IsSuccessStatusCode)
+        {
+            throw new HttpRequestException("Something went wrong");
+        }
+    
+        var content = await response.Content.ReadAsStringAsync();
+        return JsonSerializer.Deserialize<List<Location>>(content);
     }
 
-    public Task<string> FetchLocationKeyAsync(string city)
+    public async Task<string> FetchLocationKeyAsync(string city)
     {
-        throw new System.NotImplementedException();
+        using var client = new HttpClient();
+        var response = client.GetAsync($"http://dataservice.accuweather.com/locations/v1/cities/search?apikey={key}&q={city}&language={language}");
+        
+        if (!response.Result.IsSuccessStatusCode)
+        {
+            throw new HttpRequestException("Something went wrong");
+        }
+        
+        var content = await response.Result.Content.ReadAsStringAsync();
+        return JsonSerializer.Deserialize<List<Location>>(content)[0].Key;
     }
 
     public Task<DayForecast> FetchOneDayWeatherAsync(string city)
