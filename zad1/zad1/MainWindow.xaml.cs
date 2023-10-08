@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using zad1.Services;
+using Exception = System.Exception;
 
 namespace zad1;
 
@@ -35,7 +36,7 @@ public partial class MainWindow : Window
         }
     }
 
-    private async void EndpointTwoOnClick(object sender, RoutedEventArgs e)
+    private async void FetchCityCodeOnClick(object sender, RoutedEventArgs e)
     {
         try
         {
@@ -50,24 +51,104 @@ public partial class MainWindow : Window
         }
     }
 
-    private void EndpointThreeOnClick(object sender, RoutedEventArgs e)
+    private async void EndpointThreeOnClick(object sender, RoutedEventArgs e)
     {
-        throw new System.NotImplementedException();
+        try
+        {
+            var dayForecast = await _weatherService.FetchOneDayWeatherAsync(CityBox.Text);
+            var forecast = dayForecast.DailyForecasts[0];
+            var text = $"Summary: {dayForecast.Headline.Text}\n" +
+                       $"Temperature: {forecast.Temperature.Minimum.Value} - {forecast.Temperature.Maximum.Value} {forecast.Temperature.Minimum.Unit}\n" +
+                       $"Day: {forecast.Day.IconPhrase}\n" +
+                       $"Night: {forecast.Night.IconPhrase}\n" +
+                       $"Precipitation: {forecast.Day.HasPrecipitation}\n" +
+                       $"Mobile link: {forecast.MobileLink}\n" +
+                       $"Link: {forecast.Link}";
+            ResultTextBlock.Foreground = System.Windows.Media.Brushes.Black;
+            ResultTextBlock.Text = text;
+        }
+        catch (Exception exception)
+        {
+            ResultTextBlock.Foreground = System.Windows.Media.Brushes.Red;
+            ResultTextBlock.Text = exception.Message;
+        }
     }
 
-    private void EndpointFourOnClick(object sender, RoutedEventArgs e)
+    private async void EndpointFourOnClick(object sender, RoutedEventArgs e)
     {
-        throw new System.NotImplementedException();
+        try
+        {
+            var cityKey = await _weatherService.FetchLocationKeyAsync(CityBox.Text);
+            var dayForecast = await _weatherService.FetchOneDayWeatherAsync(cityKey);
+            var forecast = dayForecast.DailyForecasts[0];
+            var text = $"Summary: {dayForecast.Headline.Text}\n" +
+                       $"Temperature: {forecast.Temperature.Minimum.Value} - {forecast.Temperature.Maximum.Value} {forecast.Temperature.Minimum.Unit}\n" +
+                       $"Day: {forecast.Day.IconPhrase}\n" +
+                       $"Night: {forecast.Night.IconPhrase}\n" +
+                       $"Precipitation: {forecast.Day.HasPrecipitation}\n" +
+                       $"Mobile link: {forecast.MobileLink}\n" +
+                       $"Link: {forecast.Link}";
+            ResultTextBlock.Foreground = System.Windows.Media.Brushes.Black;
+            ResultTextBlock.Text = text;
+        }
+        catch (Exception exception)
+        {
+            ResultTextBlock.Foreground = System.Windows.Media.Brushes.Red;
+            ResultTextBlock.Text = exception.Message;
+        }
     }
 
-    private void EndpointFiveOnClick(object sender, RoutedEventArgs e)
+    private async void EndpointFiveOnClick(object sender, RoutedEventArgs e)
     {
-        throw new System.NotImplementedException();
+        try
+        {
+            var cities = await _weatherService.AutocompleteSearchAsync(CityBox.Text);
+            if (cities.Count == 0) throw new Exception("No cities found");
+            var cityKey = await _weatherService.FetchLocationKeyAsync(cities[0].LocalizedName);
+            var dayForecast = await _weatherService.FetchOneDayWeatherAsync(cityKey);
+            var forecast = dayForecast.DailyForecasts[0];
+            var text = $"City: {cities[0].LocalizedName}\n" +
+                       $"Summary: {dayForecast.Headline.Text}\n" +
+                       $"Temperature: {forecast.Temperature.Minimum.Value} - {forecast.Temperature.Maximum.Value} {forecast.Temperature.Minimum.Unit}\n" +
+                       $"Day: {forecast.Day.IconPhrase}\n" +
+                       $"Night: {forecast.Night.IconPhrase}\n" +
+                       $"Precipitation: {forecast.Day.HasPrecipitation}\n" +
+                       $"Mobile link: {forecast.MobileLink}\n" +
+                       $"Link: {forecast.Link}";
+            ResultTextBlock.Foreground = System.Windows.Media.Brushes.Black;
+            ResultTextBlock.Text = text;
+        }
+        catch (Exception exception)
+        {
+            ResultTextBlock.Foreground = System.Windows.Media.Brushes.Red;
+            ResultTextBlock.Text = exception.Message;
+        }
     }
 
-    private void EndpointSixOnClick(object sender, RoutedEventArgs e)
+    private async void EndpointSixOnClick(object sender, RoutedEventArgs e)
     {
-        throw new System.NotImplementedException();
+        try
+        {
+            var cities = await _weatherService.AutocompleteSearchAsync(CityBox.Text);
+            if (cities.Count == 0) throw new Exception("No cities found");
+            var cityKey = await _weatherService.FetchLocationKeyAsync(cities[0].LocalizedName);
+            var dayForecast = await _weatherService.FetchTenDayWeatherAsync(cityKey);
+            var forecasts= dayForecast.DailyForecasts;
+            var text = $"City: {cities[0].LocalizedName}\n" +
+                       $"Summary: {dayForecast.Headline.Text}\n";
+            text = forecasts.Aggregate(text,
+                (current, forecast) => current +
+                                       ($"{forecast.Date.ToShortDateString()}: {forecast.Temperature.Minimum.Value}" +
+                                        $"{forecast.Temperature.Minimum.Unit} - {forecast.Temperature.Maximum.Value}" +
+                                        $"{forecast.Temperature.Maximum.Unit}\n"));
+            ResultTextBlock.Foreground = System.Windows.Media.Brushes.Black;
+            ResultTextBlock.Text = text;
+        }
+        catch (Exception exception)
+        {
+            ResultTextBlock.Foreground = System.Windows.Media.Brushes.Red;
+            ResultTextBlock.Text = exception.Message;
+        }
     }
 
     private void EndpointSevenOnClick(object sender, RoutedEventArgs e)

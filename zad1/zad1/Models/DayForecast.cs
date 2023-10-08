@@ -45,14 +45,14 @@ public class Headline
 
 public class Maximum
 {
-    public int Value { get; set; }
+    public double Value { get; set; }
     public string Unit { get; set; }
     public int UnitType { get; set; }
 }
 
 public class Minimum
 {
-    public int Value { get; set; }
+    public double Value { get; set; }
     public string Unit { get; set; }
     public int UnitType { get; set; }
 }

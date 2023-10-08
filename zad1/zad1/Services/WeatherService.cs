@@ -13,49 +13,50 @@ public class WeatherService : IWeatherService
     
     public async Task<List<Location>> AutocompleteSearchAsync(string query)
     {
-        using var client = new HttpClient();
-        var response = await client.GetAsync($"http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey={key}&q={query}&language={language}");
-
-        if (!response.IsSuccessStatusCode)
-        {
-            throw new HttpRequestException("Something went wrong");
-        }
-    
-        var content = await response.Content.ReadAsStringAsync();
+        var content = await FetchResponseFromApi($"http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey={key}&q={query}&language={language}");
         return JsonSerializer.Deserialize<List<Location>>(content);
     }
 
     public async Task<string> FetchLocationKeyAsync(string city)
     {
+        var content = await FetchResponseFromApi($"http://dataservice.accuweather.com/locations/v1/cities/search?apikey={key}&q={city}&language={language}");
+        return JsonSerializer.Deserialize<List<Location>>(content)[0].Key;
+    }
+
+    public async Task<DayForecast> FetchOneDayWeatherAsync(string city)
+    {
+        var content = await FetchResponseFromApi($"http://dataservice.accuweather.com/forecasts/v1/daily/1day/{city}?apikey={key}&language={language}");
+        return JsonSerializer.Deserialize<DayForecast>(content);
+    }
+
+    public async Task<DayForecast> FetchTenDayWeatherAsync(string city)
+    {
+        var content = await FetchResponseFromApi($"http://dataservice.accuweather.com/forecasts/v1/daily/10day/{city}?apikey={key}&language={language}");
+        return JsonSerializer.Deserialize<DayForecast>(content);
+    }
+
+    public async Task<HourForecast> FetchOneHourWeatherAsync(string city)
+    {
+        var content = await FetchResponseFromApi($"http://dataservice.accuweather.com/forecasts/v1/hourly/1hour/{city}?apikey={key}&language={language}");
+        return JsonSerializer.Deserialize<HourForecast>(content);
+    }
+
+    public async Task<List<HourForecast>> FetchTwelveHourWeatherAsync(string city)
+    {
+        var content = await FetchResponseFromApi($"http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/{city}?apikey={key}&language={language}");
+        return JsonSerializer.Deserialize<List<HourForecast>>(content);
+    }
+    
+    private async Task<string> FetchResponseFromApi(string url)
+    {
         using var client = new HttpClient();
-        var response = client.GetAsync($"http://dataservice.accuweather.com/locations/v1/cities/search?apikey={key}&q={city}&language={language}");
+        var response = await client.GetAsync(url);
         
-        if (!response.Result.IsSuccessStatusCode)
+        if (!response.IsSuccessStatusCode)
         {
             throw new HttpRequestException("Something went wrong");
         }
         
-        var content = await response.Result.Content.ReadAsStringAsync();
-        return JsonSerializer.Deserialize<List<Location>>(content)[0].Key;
-    }
-
-    public Task<DayForecast> FetchOneDayWeatherAsync(string city)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public Task<List<DayForecast>> FetchTenDayWeatherAsync(string city)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public Task<HourForecast> FetchOneHourWeatherAsync(string city)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public Task<List<HourForecast>> FetchTwelveHourWeatherAsync(string city)
-    {
-        throw new System.NotImplementedException();
+        return await response.Content.ReadAsStringAsync();
     }
 }
