@@ -129,12 +129,10 @@ public partial class MainWindow : Window
     {
         try
         {
-            var cities = await _weatherService.AutocompleteSearchAsync(CityBox.Text);
-            if (cities.Count == 0) throw new Exception("No cities found");
-            var cityKey = await _weatherService.FetchLocationKeyAsync(cities[0].LocalizedName);
-            var dayForecast = await _weatherService.FetchTenDayWeatherAsync(cityKey);
+            var cityKey = await _weatherService.FetchLocationKeyAsync(CityBox.Text);
+            var dayForecast = await _weatherService.FetchFiveDaysWeatherAsync(cityKey);
             var forecasts= dayForecast.DailyForecasts;
-            var text = $"City: {cities[0].LocalizedName}\n" +
+            var text = $"City: {CityBox.Text}\n" +
                        $"Summary: {dayForecast.Headline.Text}\n";
             text = forecasts.Aggregate(text,
                 (current, forecast) => current +
@@ -151,8 +149,41 @@ public partial class MainWindow : Window
         }
     }
 
-    private void EndpointSevenOnClick(object sender, RoutedEventArgs e)
-    {
-        throw new System.NotImplementedException();
+    
+    private async void EndpointSevenOnClick(object sender, RoutedEventArgs e) 
+    { 
+        try {
+            var cityKey = await _weatherService.FetchLocationKeyAsync(CityBox.Text);
+            var hourForecast = await _weatherService.FetchOneHourWeatherAsync(cityKey);
+            var text = $"City: {CityBox.Text}\n" +
+                       $"{hourForecast.DateTime.ToShortTimeString()}: {hourForecast.Temperature.Value}" +
+                       $"{hourForecast.Temperature.Unit} {hourForecast.IconPhrase}\n";
+            ResultTextBlock.Foreground = System.Windows.Media.Brushes.Black;
+            ResultTextBlock.Text = text;
+        }
+        catch (Exception exception)
+        {
+            ResultTextBlock.Foreground = System.Windows.Media.Brushes.Red;
+            ResultTextBlock.Text = exception.Message;
+        }
+    }
+    
+    private async void EndpointEightOnClick(object sender, RoutedEventArgs e) 
+    { 
+        try {
+            var cityKey = await _weatherService.FetchLocationKeyAsync(CityBox.Text);
+            var hourForecast = await _weatherService.FetchTwelveHourWeatherAsync(cityKey);
+            var text = $"City: {CityBox.Text}\n"; 
+            text = hourForecast.Aggregate(text, (current, hourForecast) => current +
+                       $"{hourForecast.DateTime.ToShortTimeString()}: {hourForecast.Temperature.Value}" +
+                       $"{hourForecast.Temperature.Unit} {hourForecast.IconPhrase}\n");
+            ResultTextBlock.Foreground = System.Windows.Media.Brushes.Black;
+            ResultTextBlock.Text = text;
+        }
+        catch (Exception exception)
+        {
+            ResultTextBlock.Foreground = System.Windows.Media.Brushes.Red;
+            ResultTextBlock.Text = exception.Message;
+        }
     }
 }

@@ -11,10 +11,16 @@ public class HourForecast
     public string PrecipitationType { get; set; }
     public string PrecipitationIntensity { get; set; }
     public bool IsDaylight { get; set; }
-    public Temperature Temperature { get; set; }
+    public HourTemperature Temperature { get; set; }
     public int PrecipitationProbability { get; set; }
     public string MobileLink { get; set; }
     public string Link { get; set; }
 }
 
+public class HourTemperature
+{
+    public double Value { get; set; }
+    public string Unit { get; set; }
+    public int UnitType { get; set; }
+}
 

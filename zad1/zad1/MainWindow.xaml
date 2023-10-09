@@ -89,7 +89,7 @@
             Grid.Row="8"
             Margin="0,5"
             Height="30"
-            Click="EndpointSevenOnClick">
+            Click="EndpointEightOnClick">
             12 Hour Forecast
         </Button>
         <TextBox 
