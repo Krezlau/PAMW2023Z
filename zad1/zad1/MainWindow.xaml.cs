@@ -1,7 +1,5 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using zad1.Services;
 using Exception = System.Exception;
 
@@ -22,17 +20,14 @@ public partial class MainWindow : Window
 
     private async void AutoCompleteCityNameOnClick(object sender, RoutedEventArgs e)
     {
-        // autocomplete miasta
         try
         {
             var cities = await _weatherService.AutocompleteSearchAsync(CityBox.Text);
-            ResultTextBlock.Foreground = System.Windows.Media.Brushes.Black;
-            ResultTextBlock.Text = string.Join('\n' ,cities.Select(c => c.LocalizedName));
+            DisplayResultText(string.Join('\n' ,cities.Select(c => c.LocalizedName)));
         }
         catch (Exception exception)
         {
-            ResultTextBlock.Foreground = System.Windows.Media.Brushes.Red;
-            ResultTextBlock.Text = exception.Message;
+            DisplayErrorText(exception.Message);
         }
     }
 
@@ -41,17 +36,15 @@ public partial class MainWindow : Window
         try
         {
             var cityKey = await _weatherService.FetchLocationKeyAsync(CityBox.Text);
-            ResultTextBlock.Foreground = System.Windows.Media.Brushes.Black;
-            ResultTextBlock.Text = cityKey;
+            DisplayResultText(cityKey);
         }
         catch (Exception exception)
         {
-            ResultTextBlock.Foreground = System.Windows.Media.Brushes.Red;
-            ResultTextBlock.Text = exception.Message;
+            DisplayErrorText(exception.Message);
         }
     }
 
-    private async void EndpointThreeOnClick(object sender, RoutedEventArgs e)
+    private async void OneDayWeatherByCityCodeOnClick(object sender, RoutedEventArgs e)
     {
         try
         {
@@ -64,17 +57,15 @@ public partial class MainWindow : Window
                        $"Precipitation: {forecast.Day.HasPrecipitation}\n" +
                        $"Mobile link: {forecast.MobileLink}\n" +
                        $"Link: {forecast.Link}";
-            ResultTextBlock.Foreground = System.Windows.Media.Brushes.Black;
-            ResultTextBlock.Text = text;
+            DisplayResultText(text);
         }
         catch (Exception exception)
         {
-            ResultTextBlock.Foreground = System.Windows.Media.Brushes.Red;
-            ResultTextBlock.Text = exception.Message;
+            DisplayErrorText(exception.Message);
         }
     }
 
-    private async void EndpointFourOnClick(object sender, RoutedEventArgs e)
+    private async void OneDayWeatherOnClick(object sender, RoutedEventArgs e)
     {
         try
         {
@@ -88,17 +79,15 @@ public partial class MainWindow : Window
                        $"Precipitation: {forecast.Day.HasPrecipitation}\n" +
                        $"Mobile link: {forecast.MobileLink}\n" +
                        $"Link: {forecast.Link}";
-            ResultTextBlock.Foreground = System.Windows.Media.Brushes.Black;
-            ResultTextBlock.Text = text;
+            DisplayResultText(text);
         }
         catch (Exception exception)
         {
-            ResultTextBlock.Foreground = System.Windows.Media.Brushes.Red;
-            ResultTextBlock.Text = exception.Message;
+            DisplayErrorText(exception.Message);
         }
     }
 
-    private async void EndpointFiveOnClick(object sender, RoutedEventArgs e)
+    private async void OneDayWeatherWithAutocompleteOnClick(object sender, RoutedEventArgs e)
     {
         try
         {
@@ -115,17 +104,15 @@ public partial class MainWindow : Window
                        $"Precipitation: {forecast.Day.HasPrecipitation}\n" +
                        $"Mobile link: {forecast.MobileLink}\n" +
                        $"Link: {forecast.Link}";
-            ResultTextBlock.Foreground = System.Windows.Media.Brushes.Black;
-            ResultTextBlock.Text = text;
+            DisplayResultText(text);
         }
         catch (Exception exception)
         {
-            ResultTextBlock.Foreground = System.Windows.Media.Brushes.Red;
-            ResultTextBlock.Text = exception.Message;
+            DisplayErrorText(exception.Message);
         }
     }
 
-    private async void EndpointSixOnClick(object sender, RoutedEventArgs e)
+    private async void FiveDaysWeatherOnClick(object sender, RoutedEventArgs e)
     {
         try
         {
@@ -139,18 +126,16 @@ public partial class MainWindow : Window
                                        ($"{forecast.Date.ToShortDateString()}: {forecast.Temperature.Minimum.Value}" +
                                         $"{forecast.Temperature.Minimum.Unit} - {forecast.Temperature.Maximum.Value}" +
                                         $"{forecast.Temperature.Maximum.Unit}\n"));
-            ResultTextBlock.Foreground = System.Windows.Media.Brushes.Black;
-            ResultTextBlock.Text = text;
+            DisplayResultText(text);
         }
         catch (Exception exception)
         {
-            ResultTextBlock.Foreground = System.Windows.Media.Brushes.Red;
-            ResultTextBlock.Text = exception.Message;
+            DisplayErrorText(exception.Message);
         }
     }
 
     
-    private async void EndpointSevenOnClick(object sender, RoutedEventArgs e) 
+    private async void OneHourWeatherOnClick(object sender, RoutedEventArgs e) 
     { 
         try {
             var cityKey = await _weatherService.FetchLocationKeyAsync(CityBox.Text);
@@ -158,17 +143,15 @@ public partial class MainWindow : Window
             var text = $"City: {CityBox.Text}\n" +
                        $"{hourForecast.DateTime.ToShortTimeString()}: {hourForecast.Temperature.Value}" +
                        $"{hourForecast.Temperature.Unit} {hourForecast.IconPhrase}\n";
-            ResultTextBlock.Foreground = System.Windows.Media.Brushes.Black;
-            ResultTextBlock.Text = text;
+            DisplayResultText(text);
         }
         catch (Exception exception)
         {
-            ResultTextBlock.Foreground = System.Windows.Media.Brushes.Red;
-            ResultTextBlock.Text = exception.Message;
+            DisplayErrorText(exception.Message);
         }
     }
     
-    private async void EndpointEightOnClick(object sender, RoutedEventArgs e) 
+    private async void TwelveHoursWeatherOnClick(object sender, RoutedEventArgs e) 
     { 
         try {
             var cityKey = await _weatherService.FetchLocationKeyAsync(CityBox.Text);
@@ -177,13 +160,23 @@ public partial class MainWindow : Window
             text = hourForecast.Aggregate(text, (current, hourForecast) => current +
                        $"{hourForecast.DateTime.ToShortTimeString()}: {hourForecast.Temperature.Value}" +
                        $"{hourForecast.Temperature.Unit} {hourForecast.IconPhrase}\n");
-            ResultTextBlock.Foreground = System.Windows.Media.Brushes.Black;
-            ResultTextBlock.Text = text;
+            DisplayResultText(text);
         }
         catch (Exception exception)
         {
-            ResultTextBlock.Foreground = System.Windows.Media.Brushes.Red;
-            ResultTextBlock.Text = exception.Message;
+            DisplayErrorText(exception.Message);
         }
+    }
+
+    private void DisplayResultText(string text)
+    {
+        ResultTextBlock.Foreground = System.Windows.Media.Brushes.Black;
+        ResultTextBlock.Text = text;
+    }
+
+    private void DisplayErrorText(string text)
+    {
+        ResultTextBlock.Foreground = System.Windows.Media.Brushes.Red;
+        ResultTextBlock.Text = text;
     }
 }

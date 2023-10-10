@@ -49,7 +49,7 @@
             Grid.Row="3"
             Margin="0,5"
             Height="30"
-            Click="EndpointThreeOnClick">
+            Click="OneDayWeatherByCityCodeOnClick">
             One Day Forecast by City Code
         </Button>
         <Button
@@ -57,7 +57,7 @@
             Grid.Row="4"
             Margin="0,5"
             Height="30"
-            Click="EndpointFourOnClick">
+            Click="OneDayWeatherOnClick">
             One Day Forecast by City Name
         </Button>
         <Button
@@ -65,7 +65,7 @@
             Grid.Row="5"
             Margin="0,5"
             Height="30"
-            Click="EndpointFiveOnClick">
+            Click="OneDayWeatherWithAutocompleteOnClick">
             One Day Forecast by City Name with autocomplete
         </Button>
         <Button
@@ -73,15 +73,15 @@
             Grid.Row="6"
             Margin="0,5"
             Height="30"
-            Click="EndpointSixOnClick">
-            10 Day Forecast
+            Click="FiveDaysWeatherOnClick">
+            5 Day Forecast
         </Button>
         <Button 
             Grid.Column="1"
             Grid.Row="7"
             Margin="0,5"
             Height="30"
-            Click="EndpointSevenOnClick">
+            Click="OneHourWeatherOnClick">
             1 Hour Forecast
         </Button>
         <Button 
@@ -89,7 +89,7 @@
             Grid.Row="8"
             Margin="0,5"
             Height="30"
-            Click="EndpointEightOnClick">
+            Click="TwelveHoursWeatherOnClick">
             12 Hour Forecast
         </Button>
         <TextBox 
