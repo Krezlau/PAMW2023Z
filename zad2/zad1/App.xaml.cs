@@ -27,7 +27,7 @@ namespace zad1
         
         private void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IWeatherService, WeatherService>();
+           services.AddSingleton<IWeatherService, WeatherService>();
             services.AddSingleton<MainWindowViewModel>();
             services.AddTransient<MainWindow>();
         }
