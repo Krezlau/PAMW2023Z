@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "7WcmKOl3mMsMwF0VwhNC9DAE1TXzM0JxeUBnXunycFKgLS4W6R4KsJgiLJWe3SWjmjfs2Or44h1cCIOqWvmg/g==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\janus\\Documents\\lesio\\zad2\\zad1\\zad1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\janus\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.1\\communitytoolkit.mvvm.8.2.1.nupkg.sha512",
+    "C:\\Users\\janus\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\8.0.0-rc.2.23479.6\\microsoft.extensions.dependencyinjection.8.0.0-rc.2.23479.6.nupkg.sha512",
+    "C:\\Users\\janus\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0-rc.2.23479.6\\microsoft.extensions.dependencyinjection.abstractions.8.0.0-rc.2.23479.6.nupkg.sha512"
+  ],
+  "logs": []
+}

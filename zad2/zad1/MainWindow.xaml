@@ -1,0 +1,123 @@
+﻿<Window x:Class="zad1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="10" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="10" />
+        </Grid.RowDefinitions>
+
+        <Button
+            Grid.Column="1"
+            Grid.Row="1"
+            Margin="0,5"
+            Height="30"
+            Command="{Binding AutoCompleteCityNameCommand}">
+            Autocomplete City Name
+        </Button>
+        <Button
+            Grid.Column="1"
+            Grid.Row="2"
+            Margin="0,5"
+            Height="30"
+            Command="{Binding FetchCityCodeCommand}"
+            >
+            Fetch City Code
+        </Button>
+        <Button
+            Grid.Column="1"
+            Grid.Row="3"
+            Margin="0,5"
+            Height="30"
+            Command="{Binding OneDayWeatherByCityCodeCommand}"
+            >
+            One Day Forecast by City Code
+        </Button>
+        <Button
+            Grid.Column="1"
+            Grid.Row="4"
+            Margin="0,5"
+            Height="30"
+            Command="{Binding OneDayWeatherCommand}"
+            >
+            One Day Forecast by City Name
+        </Button>
+        <Button
+            Grid.Column="1"
+            Grid.Row="5"
+            Margin="0,5"
+            Height="30"
+            Command="{Binding OneDayWeatherWithAutocompleteCommand}"
+            >
+            One Day Forecast by City Name with autocomplete
+        </Button>
+        <Button
+            Grid.Column="1"
+            Grid.Row="6"
+            Margin="0,5"
+            Height="30"
+            Command="{Binding FiveDaysWeatherCommand}"
+            >
+            5 Day Forecast
+        </Button>
+        <Button 
+            Grid.Column="1"
+            Grid.Row="7"
+            Margin="0,5"
+            Height="30"
+            Command="{Binding OneHourWeatherCommand}"
+            >
+            1 Hour Forecast
+        </Button>
+        <Button 
+            Grid.Column="1"
+            Grid.Row="8"
+            Margin="0,5"
+            Height="30"
+            Command="{Binding TwelveHoursWeatherCommand}"
+            >
+            12 Hour Forecast
+        </Button>
+        <TextBox 
+            Grid.Row="1" 
+            Grid.Column="2"
+            Grid.ColumnSpan="2"
+            Margin="5,5"
+            Text="{Binding CityBoxText}"
+            >
+            
+        </TextBox>
+        <TextBlock 
+            Grid.Row="2"
+            Grid.Column="2"
+            Grid.ColumnSpan="2"
+            Grid.RowSpan="7"
+            ClipToBounds="True"
+            Margin="5,5"
+            Text="{Binding ResultText}"
+            Foreground="{Binding ResultColor}"
+            >
+        </TextBlock>
+    </Grid>
+</Window>
