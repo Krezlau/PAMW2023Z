@@ -64,24 +64,6 @@ public class BooksController : Controller
         }
     }
     
-    [HttpPut("{id}")]
-    public async Task<ActionResult> UpdateBook(Guid id, BookDTO book)
-    {
-        try
-        {
-            await _booksService.UpdateBookAsync(id, book);
-            return Ok();
-        }
-        catch (ArgumentException e)
-        {
-            return BadRequest(e.Message);
-        }
-        catch (Exception e)
-        {
-            return BadRequest("Something went wrong");
-        }
-    }
-    
     [HttpDelete("{id}")]
     public async Task<ActionResult> DeleteBook(Guid id)
     {
