@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using zad3.Database;
+using zad3.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,7 @@ builder.Services.AddDbContext<BooksDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+builder.Services.AddScoped<IBooksService, BooksService>();
 
 var app = builder.Build();
 
