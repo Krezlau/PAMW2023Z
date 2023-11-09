@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zad5", "zad5\zad5.csproj", "{6B97D4AB-E76F-4444-BBDE-B42216C9730F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6B97D4AB-E76F-4444-BBDE-B42216C9730F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B97D4AB-E76F-4444-BBDE-B42216C9730F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B97D4AB-E76F-4444-BBDE-B42216C9730F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B97D4AB-E76F-4444-BBDE-B42216C9730F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
