@@ -1,0 +1,20 @@
+﻿@Model zad5.Models.ViewModels.BookList
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>title</title>
+</head>
+<body>
+<div class="align-content-center mx-auto">
+    @foreach (var book in Model.Books)
+    {
+        <h1>@book.Title</h1>
+        <h2>@book.Author</h2>
+    } 
+</div>
+</body>
+</html>
