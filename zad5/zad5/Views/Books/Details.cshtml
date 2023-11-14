@@ -1,0 +1,8 @@
+@model zad5.Models.Book 
+
+
+<h1>@Model.Title</h1>
+<h2>@Model.Author</h2>
+<p>@Model.Synopsis</p>
+
+<a class="btn btn-primary" href="@Url.Action("DeleteBook", "Books", new { id = @Model.Id })">Delete</a>

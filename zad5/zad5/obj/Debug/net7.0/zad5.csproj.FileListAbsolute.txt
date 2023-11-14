@@ -28,3 +28,4 @@ C:\Users\janus\Documents\lesio\zad5\zad5\obj\Debug\net7.0\refint\zad5.dll
 C:\Users\janus\Documents\lesio\zad5\zad5\obj\Debug\net7.0\zad5.pdb
 C:\Users\janus\Documents\lesio\zad5\zad5\obj\Debug\net7.0\zad5.genruntimeconfig.cache
 C:\Users\janus\Documents\lesio\zad5\zad5\obj\Debug\net7.0\ref\zad5.dll
+C:\Users\janus\Documents\lesio\zad5\zad5\obj\Debug\net7.0\zad5.csproj.AssemblyReference.cache
