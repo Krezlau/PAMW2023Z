@@ -1,6 +1,32 @@
 @page "/AddBook"
+@using zad6.Models
+@using zad6.Services
+@inject IBookService bookService
+@inject NavigationManager navigationManager
 <h3>AddBook</h3>
 
+<EditForm Model="@Model" OnValidSubmit="OnSubmit">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <ValidationSummary></ValidationSummary>
+    <label class="form-label">Title</label>
+    <InputText class="form-control" @bind-Value="Model.Title" type="text"/>
+    <label class="form-label">Author</label>
+    <InputText class="form-control" @bind-Value="Model.Author" type="text"/>
+    <label class="form-label">Synopsis</label>
+    <InputTextArea class="form-control" @bind-Value="Model.Synopsis"></InputTextArea>
+    <label class="form-label">Rating</label>
+    <InputNumber class="form-control" @bind-Value="Model.Rating" type="number" min="1" max="5" step="1"/>
+
+    <button class="btn btn-primary mt-5" type="submit">Add Book</button>
+</EditForm>
+
 @code {
+    public BookDTO? Model { get; set; } = new BookDTO();
     
+    private async Task OnSubmit()
+    {
+        await bookService.CreateBookAsync(Model);
+        navigationManager.NavigateTo("/bookList");
+    }
+
 }
