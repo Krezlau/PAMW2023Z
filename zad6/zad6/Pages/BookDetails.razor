@@ -1,0 +1,55 @@
+@page "/BookList/{Id:guid}"
+@using zad6.Services
+@using zad6.Models
+@inject IBookService bookService
+@inject NavigationManager urihelper
+<h3>BookDetails</h3>
+@if (book is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <main>
+        <div>
+            <h1>@book.Title</h1>
+            <p>@book.Author</p>
+            <p>@book.Synopsis</p>
+            <p>@book.Rating</p>
+        </div>
+        <div>
+            <button @onclick="DeleteBook" class="btn btn-danger">Delete</button>
+            <a href="/bookList/@Id/edit" class="btn btn-primary">Edit</a>
+        </div>
+    </main>
+}
+
+@code {
+    [Parameter]
+    public Guid Id { get; set; }
+
+    private Book book;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        if (Id == Guid.Empty)
+        {
+            return;
+        }
+        book = await bookService.FetchBookAsync(Id);
+    }
+    
+    private async Task DeleteBook()
+    {
+        try
+        {
+            await bookService.DeleteBookAsync(Id);
+            // redirect to book list
+            urihelper.NavigateTo("/bookList");
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
+}
