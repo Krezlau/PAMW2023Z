@@ -35,13 +35,6 @@ public class BooksService : IBooksService
         return guid;
     }
 
-    public async Task UpdateBookAsync(Guid id, BookDTO book)
-    {
-        using var client = new HttpClient();
-        var response = await client.PutAsync($"http://localhost:5044/api/books/{id}", new StringContent(JsonSerializer.Serialize(book), System.Text.Encoding.UTF8, "application/json"));
-        response.EnsureSuccessStatusCode();
-    }
-
     public async Task DeleteBookAsync(Guid id)
     {
         using var client = new HttpClient();
