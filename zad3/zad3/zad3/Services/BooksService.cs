@@ -56,4 +56,18 @@ public class BooksService : IBooksService
         _context.Books.Remove(bookWithTheId);
         await _context.SaveChangesAsync();
     }
+    
+    public async Task UpdateBookAsync(Guid id, BookDTO book)
+    {
+        Book? bookWithTheId  = await _context.Books.Where(b => b.Id == id).FirstOrDefaultAsync();
+
+        if (bookWithTheId is null)
+            throw new ArgumentException($"Book with the specified id {id} does not exist");
+        
+        bookWithTheId.Author = book.Author;
+        bookWithTheId.Synopsis = book.Synopsis;
+        bookWithTheId.Title = book.Title;
+        bookWithTheId.Rating = book.Rating;
+        await _context.SaveChangesAsync();
+    }
 }

@@ -81,4 +81,22 @@ public class BooksController : Controller
             return BadRequest("Something went wrong");
         }
     }
+    
+    [HttpPut("{id}")]
+    public async Task<ActionResult> UpdateBook(Guid id, BookDTO book)
+    {
+        try
+        {
+            await _booksService.UpdateBookAsync(id, book);
+            return Ok();
+        }
+        catch (ArgumentException e)
+        {
+            return BadRequest(e.Message);
+        }
+        catch (Exception e)
+        {
+            return BadRequest("Something went wrong");
+        }
+    }
 }

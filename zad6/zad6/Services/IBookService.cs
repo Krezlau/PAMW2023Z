@@ -8,4 +8,5 @@ public interface IBookService
     Task<Book?> FetchBookAsync(Guid id);
     Task<Guid> CreateBookAsync(BookDTO book);
     Task DeleteBookAsync(Guid id);
+    Task UpdateBookAsync(Guid id, BookDTO book);
 }
