@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "WcqUhHt+vKjTN89ctipJUdeV51ZI3MUugouP2n/Y/WY6ywQ+hvFjCrAqiNyp8lcmyHfergoKTJOBWBwNnY+FgQ==",
+  "dgSpecHash": "dfO8qLRr8a8Gp2yWcW4kqK+6xWM3/Mk1lHscja2G2Rpu/IIMIPqgW4oPV0Wdsr3dE+mmV0pFNJP1lzdWW947EQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Krzycho\\Documents\\lesio\\zad7\\zad7\\zad7.csproj",
   "expectedPackageFiles": [
@@ -26,6 +26,7 @@
     "C:\\Users\\Krzycho\\.nuget\\packages\\microsoft.maui.graphics.win2d.winui.desktop\\8.0.3\\microsoft.maui.graphics.win2d.winui.desktop.8.0.3.nupkg.sha512",
     "C:\\Users\\Krzycho\\.nuget\\packages\\microsoft.maui.resizetizer\\8.0.3\\microsoft.maui.resizetizer.8.0.3.nupkg.sha512",
     "C:\\Users\\Krzycho\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.0\\microsoft.net.illink.tasks.8.0.0.nupkg.sha512",
+    "C:\\Users\\Krzycho\\.nuget\\packages\\microsoft.toolkit.mvvm\\7.1.2\\microsoft.toolkit.mvvm.7.1.2.nupkg.sha512",
     "C:\\Users\\Krzycho\\.nuget\\packages\\microsoft.windows.sdk.buildtools\\10.0.22621.756\\microsoft.windows.sdk.buildtools.10.0.22621.756.nupkg.sha512",
     "C:\\Users\\Krzycho\\.nuget\\packages\\microsoft.windowsappsdk\\1.3.230724000\\microsoft.windowsappsdk.1.3.230724000.nupkg.sha512",
     "C:\\Users\\Krzycho\\.nuget\\packages\\xamarin.android.glide\\4.15.1.2\\xamarin.android.glide.4.15.1.2.nupkg.sha512",

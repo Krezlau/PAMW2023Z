@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:zad7.Models"
+             x:Class="zad7.BookListPage">
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <Button Text="Load Books" Command="{Binding LoadBooksCommand}"></Button>
+            <ListView ItemsSource="{Binding Books}" SelectedItem="{Binding SelectedBook}"
+                      Margin="5">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Book">
+                        <ViewCell>
+                        <Grid x:DataType="models:Book">
+                            <Label Text="{Binding Title}" Grid.Column="0"
+                                   Padding="5"
+                            />
+                        </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,11 +1,3 @@
-C:\Users\Krzycho\Documents\lesio\zad7\zad7\bin\Debug\net8.0-android\zad7.runtimeconfig.json
-C:\Users\Krzycho\Documents\lesio\zad7\zad7\bin\Debug\net8.0-android\zad7.dll
-C:\Users\Krzycho\Documents\lesio\zad7\zad7\bin\Debug\net8.0-android\zad7.pdb
-C:\Users\Krzycho\Documents\lesio\zad7\zad7\bin\Debug\net8.0-android\com.companyname.zad7.apk
-C:\Users\Krzycho\Documents\lesio\zad7\zad7\bin\Debug\net8.0-android\com.companyname.zad7.aab
-C:\Users\Krzycho\Documents\lesio\zad7\zad7\bin\Debug\net8.0-android\com.companyname.zad7-Signed.aab
-C:\Users\Krzycho\Documents\lesio\zad7\zad7\bin\Debug\net8.0-android\com.companyname.zad7-Signed.apk
-C:\Users\Krzycho\Documents\lesio\zad7\zad7\bin\Debug\net8.0-android\com.companyname.zad7-Signed.apk.idsig
 C:\Users\Krzycho\Documents\lesio\zad7\zad7\obj\Debug\net8.0-android\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs
 C:\Users\Krzycho\Documents\lesio\zad7\zad7\obj\Debug\net8.0-android\build.props
 C:\Users\Krzycho\Documents\lesio\zad7\zad7\obj\Debug\net8.0-android\adb.props
@@ -115,6 +107,14 @@ C:\Users\Krzycho\Documents\lesio\zad7\zad7\obj\Debug\net8.0-android\zad7.Assembl
 C:\Users\Krzycho\Documents\lesio\zad7\zad7\obj\Debug\net8.0-android\zad7.AssemblyInfo.cs
 C:\Users\Krzycho\Documents\lesio\zad7\zad7\obj\Debug\net8.0-android\zad7.csproj.CoreCompileInputs.cache
 C:\Users\Krzycho\Documents\lesio\zad7\zad7\obj\Debug\net8.0-android\zad7.sourcelink.json
+C:\Users\Krzycho\Documents\lesio\zad7\zad7\bin\Debug\net8.0-android\zad7.runtimeconfig.json
+C:\Users\Krzycho\Documents\lesio\zad7\zad7\bin\Debug\net8.0-android\zad7.dll
+C:\Users\Krzycho\Documents\lesio\zad7\zad7\bin\Debug\net8.0-android\zad7.pdb
+C:\Users\Krzycho\Documents\lesio\zad7\zad7\bin\Debug\net8.0-android\com.companyname.zad7.apk
+C:\Users\Krzycho\Documents\lesio\zad7\zad7\bin\Debug\net8.0-android\com.companyname.zad7.aab
+C:\Users\Krzycho\Documents\lesio\zad7\zad7\bin\Debug\net8.0-android\com.companyname.zad7-Signed.aab
+C:\Users\Krzycho\Documents\lesio\zad7\zad7\bin\Debug\net8.0-android\com.companyname.zad7-Signed.apk
+C:\Users\Krzycho\Documents\lesio\zad7\zad7\bin\Debug\net8.0-android\com.companyname.zad7-Signed.apk.idsig
 C:\Users\Krzycho\Documents\lesio\zad7\zad7\obj\Debug\net8.0-android\XamlC.stamp
 C:\Users\Krzycho\Documents\lesio\zad7\zad7\obj\Debug\net8.0-android\zad7.dll
 C:\Users\Krzycho\Documents\lesio\zad7\zad7\obj\Debug\net8.0-android\zad7.pdb
@@ -169,6 +169,8 @@ C:\Users\Krzycho\Documents\lesio\zad7\zad7\obj\Debug\net8.0-android\android\asse
 C:\Users\Krzycho\Documents\lesio\zad7\zad7\obj\Debug\net8.0-android\android\assets\Microsoft.Maui.Graphics.dll
 C:\Users\Krzycho\Documents\lesio\zad7\zad7\obj\Debug\net8.0-android\android\assets\Microsoft.Maui.Graphics.pdb
 C:\Users\Krzycho\Documents\lesio\zad7\zad7\obj\Debug\net8.0-android\android\assets\Microsoft.Maui.pdb
+C:\Users\Krzycho\Documents\lesio\zad7\zad7\obj\Debug\net8.0-android\android\assets\Microsoft.Toolkit.Mvvm.dll
+C:\Users\Krzycho\Documents\lesio\zad7\zad7\obj\Debug\net8.0-android\android\assets\Microsoft.Toolkit.Mvvm.pdb
 C:\Users\Krzycho\Documents\lesio\zad7\zad7\obj\Debug\net8.0-android\android\assets\Microsoft.VisualBasic.Core.dll
 C:\Users\Krzycho\Documents\lesio\zad7\zad7\obj\Debug\net8.0-android\android\assets\Microsoft.VisualBasic.dll
 C:\Users\Krzycho\Documents\lesio\zad7\zad7\obj\Debug\net8.0-android\android\assets\Microsoft.Win32.Primitives.dll
@@ -1037,3 +1039,4 @@ C:\Users\Krzycho\Documents\lesio\zad7\zad7\obj\Debug\net8.0-android\stamp\_Gener
 C:\Users\Krzycho\Documents\lesio\zad7\zad7\obj\Debug\net8.0-android\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\Krzycho\Documents\lesio\zad7\zad7\obj\Debug\net8.0-android\stamp\_ResolveLibraryProjectImports.stamp
 C:\Users\Krzycho\Documents\lesio\zad7\zad7\obj\Debug\net8.0-android\android\assets\System.Private.CoreLib.dll
+C:\Users\Krzycho\Documents\lesio\zad7\zad7\obj\Debug\net8.0-android\res\xml\network_security_config.xml
