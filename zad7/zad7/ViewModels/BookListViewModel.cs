@@ -24,6 +24,7 @@ public partial class BookListViewModel : ObservableObject
     }
     
     public ICommand LoadBooksCommand => new AsyncRelayCommand(LoadBooksAsync);
+    public ICommand ViewBookDetailsCommand => new AsyncRelayCommand(ViewBookDetailsAsync);
     
     private Book _selectedBook = new();
     public Book SelectedBook
@@ -44,6 +45,6 @@ public partial class BookListViewModel : ObservableObject
     private async Task ViewBookDetailsAsync()
     {
         if (SelectedBook.Id != Guid.Empty)
-            await Shell.Current.GoToAsync($"bookdetails?id={SelectedBook.Id}");
+            await Shell.Current.GoToAsync($"BookDetailsPage?id={SelectedBook.Id}");
     }
 }

@@ -30,6 +30,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = zad7.AppShell.xaml
 build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
 build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
 
+[C:/Users/Krzycho/Documents/lesio/zad7/zad7/BookDetailsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = zad7.BookDetailsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = BookDetailsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = BookDetailsPage.xaml
+
 [C:/Users/Krzycho/Documents/lesio/zad7/zad7/BookListPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = zad7.BookListPage.xaml

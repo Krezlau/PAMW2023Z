@@ -46,6 +46,7 @@ public static class MauiProgram
         services.AddTransient<MainViewModel>();
         services.AddTransient<AddABookViewModel>();
         services.AddTransient<BookListViewModel>();
+        services.AddTransient<BookDetailsViewModel>();
 
 
 
@@ -58,5 +59,6 @@ public static class MauiProgram
         services.AddSingleton<MainPage>();
         services.AddTransient<AddABookPage>();
         services.AddTransient<BookListPage>();
+        services.AddTransient<BookDetailsPage>();
     }
 }

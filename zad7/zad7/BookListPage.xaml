@@ -24,6 +24,8 @@
                 </ListView.ItemTemplate>
 
             </ListView>
+        <Button Command="{Binding ViewBookDetailsCommand}" Text="View Details"></Button>
         </VerticalStackLayout>
+        
     </ScrollView>
 </ContentPage>

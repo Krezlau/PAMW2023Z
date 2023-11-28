@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="zad7.BookDetailsPage">
+    <ContentPage.Content>
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <Label Text="{Binding Book.Title}"></Label>
+            <Label Text="{Binding Book.Author}"></Label>
+            <Label Text="{Binding Book.Synopsis}"></Label>
+            <Label Text="{Binding Book.Rating}"></Label>
+        </VerticalStackLayout>
+    </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
