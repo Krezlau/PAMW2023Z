@@ -1,4 +1,6 @@
-﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+﻿using System.Windows.Input;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Input;
 using zad7.Models;
 using zad7.Services;
 
@@ -12,7 +14,6 @@ public class BookDetailsViewModel : ObservableObject
     public BookDetailsViewModel(IBooksService booksService)
     {
         _booksService = booksService;
-        
     }
     
     private string _id;
@@ -32,5 +33,20 @@ public class BookDetailsViewModel : ObservableObject
     {
         get => _book;
         set => SetProperty(ref _book, value);
+    }
+
+    public ICommand DeleteBookCommand => new AsyncRelayCommand(DeleteBookAsync);
+
+    private async Task DeleteBookAsync()
+    {
+        await _booksService.DeleteBookAsync(Book.Id);
+        await Shell.Current.GoToAsync("..");
+    }
+    
+    public ICommand EditBookCommand => new AsyncRelayCommand(EditBookAsync);
+
+    private async Task EditBookAsync()
+    {
+        await Shell.Current.GoToAsync($"{nameof(EditBookPage)}?id={Book.Id}");
     }
 }

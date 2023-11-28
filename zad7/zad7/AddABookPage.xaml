@@ -4,6 +4,30 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="zad7.AddABookPage">
     <ContentPage.Content>
-        
+   <ScrollView>
+         <VerticalStackLayout
+             Padding="30,0"
+             Spacing="25">
+                <Label
+                    Text="Add a book"
+                    FontSize="Title"
+                    HorizontalOptions="Center" />
+                <Entry
+                    Text="{Binding Title}"
+                    Placeholder="Title" />
+                <Entry
+                    Text="{Binding Author}"
+                    Placeholder="Author" />
+                <Entry
+                    Text="{Binding Synopsis}"
+                    Placeholder="Synopsis" />
+                <Entry
+                    Text="{Binding Rating}"
+                    Placeholder="Rating (number)" />
+                <Label Text="{Binding ErrorMessage}" TextColor="Red"></Label>
+                <Button Command="{Binding SubmitCommand}" Text="Submit"></Button>
+                
+         </VerticalStackLayout>
+     </ScrollView>       
     </ContentPage.Content>
 </ContentPage>

@@ -12,6 +12,8 @@
             <Label Text="{Binding Book.Author}"></Label>
             <Label Text="{Binding Book.Synopsis}"></Label>
             <Label Text="{Binding Book.Rating}"></Label>
+            <Button Text="Edit" Command="{Binding EditBookCommand}"></Button>
+            <Button Text="Delete" Command="{Binding DeleteBookCommand}"></Button>
         </VerticalStackLayout>
     </ScrollView>
     </ContentPage.Content>

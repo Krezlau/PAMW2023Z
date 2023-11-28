@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="zad7.EditBookPage">
+    <ContentPage.Content>
+   <ScrollView>
+         <VerticalStackLayout
+             Padding="30,0"
+             Spacing="25">
+                <Label
+                    Text="Edit a book"
+                    FontSize="Title"
+                    HorizontalOptions="Center" />
+                <Label Text="{Binding Book.Id}"></Label>
+                <Entry
+                    Text="{Binding Book.Title, Mode=TwoWay}"
+                    Placeholder="Title" />
+                <Entry
+                    Text="{Binding Book.Author, Mode=TwoWay}"
+                    Placeholder="Author" />
+                <Entry
+                    Text="{Binding Book.Synopsis, Mode=TwoWay}"
+                    Placeholder="Synopsis" />
+                <Entry
+                    Text="{Binding Rating, Mode=TwoWay}"
+                    Placeholder="Rating (number)" />
+                <Label Text="{Binding ErrorMessage}" TextColor="Red"></Label>
+                <Button Command="{Binding SubmitCommand}" Text="Edit"></Button>
+                
+         </VerticalStackLayout>
+     </ScrollView>       
+    </ContentPage.Content>
+</ContentPage>

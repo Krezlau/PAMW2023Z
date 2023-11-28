@@ -35,30 +35,24 @@ public static class MauiProgram
 
     private static void ConfigureAppServices(IServiceCollection services)
     {
-        // konfiguracja serwisów 
         services.AddSingleton<IBooksService, BooksService>();
     }
 
     private static void ConfigureViewModels(IServiceCollection services)
     {
-
-        // konfiguracja viewModeli 
         services.AddTransient<MainViewModel>();
         services.AddTransient<AddABookViewModel>();
         services.AddTransient<BookListViewModel>();
         services.AddTransient<BookDetailsViewModel>();
-
-
-
-        // services.AddSingleton<BaseViewModel,MainViewModelV3>();
+        services.AddTransient<EditBookViewModel>();
     }
 
     private static void ConfigureViews(IServiceCollection services)
     {
-        // konfiguracja okienek 
         services.AddSingleton<MainPage>();
         services.AddTransient<AddABookPage>();
         services.AddTransient<BookListPage>();
         services.AddTransient<BookDetailsPage>();
+        services.AddTransient<EditBookPage>();
     }
 }

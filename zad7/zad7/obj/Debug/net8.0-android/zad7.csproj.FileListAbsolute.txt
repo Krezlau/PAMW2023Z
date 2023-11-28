@@ -1038,5 +1038,5 @@ C:\Users\Krzycho\Documents\lesio\zad7\zad7\obj\Debug\net8.0-android\stamp\_Conve
 C:\Users\Krzycho\Documents\lesio\zad7\zad7\obj\Debug\net8.0-android\stamp\_GenerateJavaStubs.stamp
 C:\Users\Krzycho\Documents\lesio\zad7\zad7\obj\Debug\net8.0-android\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\Krzycho\Documents\lesio\zad7\zad7\obj\Debug\net8.0-android\stamp\_ResolveLibraryProjectImports.stamp
-C:\Users\Krzycho\Documents\lesio\zad7\zad7\obj\Debug\net8.0-android\android\assets\System.Private.CoreLib.dll
 C:\Users\Krzycho\Documents\lesio\zad7\zad7\obj\Debug\net8.0-android\res\xml\network_security_config.xml
+C:\Users\Krzycho\Documents\lesio\zad7\zad7\obj\Debug\net8.0-android\android\assets\System.Private.CoreLib.dll
