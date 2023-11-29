@@ -1,1 +1,6 @@
-/zad7/zad7/bin/
+/zad7/zad7/bin/*
+/zad7/zad7/obj/*
+zad3/zad3/zad3/bin/Debug/net7.0
+zad3/zad3/zad3/obj/Debug/net7.0
+zad7/zad7/bin/Debug
+zad7/zad7/obj/Debug
