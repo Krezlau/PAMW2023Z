@@ -36,6 +36,7 @@ public static class MauiProgram
     private static void ConfigureAppServices(IServiceCollection services)
     {
         services.AddSingleton<IBooksService, BooksService>();
+        services.AddSingleton<IAuthService, AuthService>();
     }
 
     private static void ConfigureViewModels(IServiceCollection services)
@@ -45,6 +46,9 @@ public static class MauiProgram
         services.AddTransient<BookListViewModel>();
         services.AddTransient<BookDetailsViewModel>();
         services.AddTransient<EditBookViewModel>();
+        services.AddTransient<ChangePasswordViewModel>();
+        services.AddTransient<LoginViewModel>();
+        services.AddTransient<RegisterViewModel>();
     }
 
     private static void ConfigureViews(IServiceCollection services)
@@ -54,5 +58,8 @@ public static class MauiProgram
         services.AddTransient<BookListPage>();
         services.AddTransient<BookDetailsPage>();
         services.AddTransient<EditBookPage>();
+        services.AddTransient<ChangePasswordPage>();
+        services.AddTransient<LoginPage>();
+        services.AddTransient<RegisterPage>();
     }
 }
