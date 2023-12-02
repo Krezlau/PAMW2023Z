@@ -10,11 +10,15 @@ namespace zad7.ViewModels;
 public partial class BookListViewModel : ObservableObject
 {
     private readonly IBooksService _booksService;
+    private readonly IAuthService _authService;
 
-    public BookListViewModel(IBooksService booksService)
+    public BookListViewModel(IBooksService booksService, IAuthService authService)
     {
         _booksService = booksService;
+        _authService = authService;
     }
+    
+    public string LoggedUser => _authService.Username ?? "Not logged in";
     
     private ObservableCollection<Book> _books = new();
     public ObservableCollection<Book> Books

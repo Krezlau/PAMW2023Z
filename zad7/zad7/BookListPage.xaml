@@ -3,11 +3,13 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:models="clr-namespace:zad7.Models"
+             xmlns:zad7="clr-namespace:zad7"
              x:Class="zad7.BookListPage">
     <ScrollView>
         <VerticalStackLayout
             Padding="30,0"
             Spacing="25">
+            <zad7:Header />
             <Button Text="Load Books" Command="{Binding LoadBooksCommand}"></Button>
             <ListView ItemsSource="{Binding Books}" SelectedItem="{Binding SelectedBook}"
                       Margin="5">

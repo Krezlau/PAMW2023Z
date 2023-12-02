@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using zad3.Models;
@@ -17,6 +18,7 @@ public class BooksController : Controller
     }
     
     [HttpGet]
+    [Authorize]
     public async Task<ActionResult<List<Book>>> GetBooks()
     {
         try
@@ -30,6 +32,7 @@ public class BooksController : Controller
     }
     
     [HttpGet("{id}")]
+    [Authorize]
     public async Task<ActionResult<Book>> GetBookById(Guid id)
     {
         try
@@ -47,6 +50,7 @@ public class BooksController : Controller
     }
     
     [HttpPost]
+    [Authorize]
     public async Task<ActionResult<Guid>> CreateBook(BookDTO book)
     {
         try
@@ -65,6 +69,7 @@ public class BooksController : Controller
     }
     
     [HttpDelete("{id}")]
+    [Authorize]
     public async Task<ActionResult> DeleteBook(Guid id)
     {
         try
@@ -83,6 +88,7 @@ public class BooksController : Controller
     }
     
     [HttpPut("{id}")]
+    [Authorize]
     public async Task<ActionResult> UpdateBook(Guid id, BookDTO book)
     {
         try

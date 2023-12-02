@@ -1,13 +1,23 @@
-﻿using System.Text.Json;
+﻿using System.Net.Http.Headers;
+using System.Text.Json;
 using zad7.Models;
 
 namespace zad7.Services;
 
 public class BooksService : IBooksService
 {
+    private readonly IAuthService _authService;
+
+    public BooksService(IAuthService authService)
+    {
+        _authService = authService;
+    }
+
     public async Task<List<Book>?> FetchAllBooksAsync()
     {
         using var client = new HttpClient();
+        // auth header 
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _authService.Token);
         var response = await client.GetAsync("http://10.0.2.2:5044/api/books");
         response.EnsureSuccessStatusCode();
         var responseBody = await response.Content.ReadAsStringAsync();
@@ -18,6 +28,8 @@ public class BooksService : IBooksService
     public async Task<Book?> FetchBookByIdAsync(Guid id)
     {
         using var client = new HttpClient();
+        // auth header
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _authService.Token);
         var response = await client.GetAsync($"http://10.0.2.2:5044/api/books/{id.ToString()}");
         response.EnsureSuccessStatusCode();
         var responseBody = await response.Content.ReadAsStringAsync();
@@ -28,6 +40,8 @@ public class BooksService : IBooksService
     public async Task<Guid> CreateBookAsync(BookDTO book)
     {
         using var client = new HttpClient();
+        // auth header
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _authService.Token);
         var response = await client.PostAsync("http://10.0.2.2:5044/api/books", new StringContent(JsonSerializer.Serialize(book), System.Text.Encoding.UTF8, "application/json"));
         response.EnsureSuccessStatusCode();
         var responseBody = await response.Content.ReadAsStringAsync();
@@ -38,6 +52,8 @@ public class BooksService : IBooksService
     public async Task DeleteBookAsync(Guid id)
     {
         using var client = new HttpClient();
+        // auth header
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _authService.Token);
         var response = await client.DeleteAsync($"http://10.0.2.2:5044/api/books/{id}");
         response.EnsureSuccessStatusCode();
     } 
@@ -45,6 +61,8 @@ public class BooksService : IBooksService
     public async Task UpdateBookAsync(Guid id, BookDTO book)
     {
         using var client = new HttpClient();
+        // auth header
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _authService.Token);
         var response = await client.PutAsync($"http://10.0.2.2:5044/api/books/{id}", new StringContent(JsonSerializer.Serialize(book), System.Text.Encoding.UTF8, "application/json"));
         response.EnsureSuccessStatusCode();
     }

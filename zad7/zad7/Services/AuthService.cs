@@ -67,4 +67,12 @@ public class AuthService : IAuthService
         
         return null;
     }
+    
+    public void Logout()
+    {
+        isLoggedIn = false;
+        Token = null;
+        Username = null;
+        UserId = null;
+    }
 }

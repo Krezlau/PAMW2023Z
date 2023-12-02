@@ -2,14 +2,18 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:zad7.ViewModels"
+             xmlns:zad7="clr-namespace:zad7"
              x:Class="zad7.MainPage">
 
     <ScrollView>
         <VerticalStackLayout
             Padding="30,0"
             Spacing="25">
+            <zad7:Header />
             <Button Command="{Binding ShowBooksCommand}" Text="Show Books"></Button>
             <Button Command="{Binding AddBookCommand}" Text="Add a Book"></Button>
+            <Button Command="{Binding ChangePasswordCommand}" Text="Change Password"></Button>
+            <Button Command="{Binding LogoutCommand}" Text="Logout"></Button>
         </VerticalStackLayout>
     </ScrollView>
 
