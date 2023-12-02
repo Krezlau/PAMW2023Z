@@ -1,4 +1,7 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@using zad6.Services
+@inject IAuthService authService
+
+<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="">zad6</a>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
@@ -14,6 +17,8 @@
                 <span class="oi oi-home" aria-hidden="true"></span> Home
             </NavLink>
         </div>
+        @if (authService.isLoggedIn)
+        {
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="addbook">
                 <span class="oi oi-plus" aria-hidden="true"></span> Add Book
@@ -24,17 +29,55 @@
                 <span class="oi oi-list-rich" aria-hidden="true"></span> Book List 
             </NavLink>
         </div>
+        <div class="nav-item px-3">
+            <p class="text-center text-white">Logged User: @authService.Username</p>
+        </div>
+        <div class="nav-item px-3">
+            <button onclick="@Logout()">Logout</button>
+        </div>
+        }
+        else
+        {
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="Login">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Login 
+            </NavLink>
+        </div>
+        }
     </nav>
+    <div class="flex-row mx-auto justify-content-center">
+        
+    </div>
 </div>
 
 @code {
     private bool collapseNavMenu = true;
 
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+    
+    public string? Username => authService.Username;
+    public bool isLoggedIn => authService.isLoggedIn;
+
+    protected override void OnInitialized()
+    {
+        authService.AuthStateChanged += OnAuthChanged;
+        base.OnInitialized();
+    }
+
+    private void OnAuthChanged()
+    {
+        Console.Write("Auth changed");
+        StateHasChanged();
+    }
 
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
+    }
+    
+    private async Task Logout()
+    {
+        authService.Logout();
     }
 
 }

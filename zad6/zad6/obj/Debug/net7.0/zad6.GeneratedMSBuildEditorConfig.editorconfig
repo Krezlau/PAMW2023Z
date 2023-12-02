@@ -1,4 +1,8 @@
 is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
 build_property.TargetFramework = net7.0
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = 
@@ -9,49 +13,63 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = zad6
 build_property.RootNamespace = zad6
-build_property.ProjectDir = C:\Users\janus\Documents\lesio\zad6\zad6\
+build_property.ProjectDir = C:\Users\Krzycho\Documents\lesio\zad6\zad6\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\janus\Documents\lesio\zad6\zad6
+build_property.MSBuildProjectDirectory = C:\Users\Krzycho\Documents\lesio\zad6\zad6
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/janus/Documents/lesio/zad6/zad6/App.razor]
+[C:/Users/Krzycho/Documents/lesio/zad6/zad6/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/janus/Documents/lesio/zad6/zad6/Pages/AddBook.razor]
+[C:/Users/Krzycho/Documents/lesio/zad6/zad6/Pages/AddBook.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkQm9vay5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/janus/Documents/lesio/zad6/zad6/Pages/BookDetails.razor]
+[C:/Users/Krzycho/Documents/lesio/zad6/zad6/Pages/BookDetails.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQm9va0RldGFpbHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/janus/Documents/lesio/zad6/zad6/Pages/BookList.razor]
+[C:/Users/Krzycho/Documents/lesio/zad6/zad6/Pages/BookList.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQm9va0xpc3QucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/janus/Documents/lesio/zad6/zad6/Pages/EditBook.razor]
+[C:/Users/Krzycho/Documents/lesio/zad6/zad6/Pages/ChangePassword.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2hhbmdlUGFzc3dvcmQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Krzycho/Documents/lesio/zad6/zad6/Pages/EditBook.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdEJvb2sucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/janus/Documents/lesio/zad6/zad6/Pages/Index.razor]
+[C:/Users/Krzycho/Documents/lesio/zad6/zad6/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/janus/Documents/lesio/zad6/zad6/Shared/SurveyPrompt.razor]
+[C:/Users/Krzycho/Documents/lesio/zad6/zad6/Pages/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Krzycho/Documents/lesio/zad6/zad6/Pages/Register.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0ZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Krzycho/Documents/lesio/zad6/zad6/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/janus/Documents/lesio/zad6/zad6/_Imports.razor]
+[C:/Users/Krzycho/Documents/lesio/zad6/zad6/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/janus/Documents/lesio/zad6/zad6/Shared/MainLayout.razor]
+[C:/Users/Krzycho/Documents/lesio/zad6/zad6/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-nvk9c3ndkn
 
-[C:/Users/janus/Documents/lesio/zad6/zad6/Shared/NavMenu.razor]
+[C:/Users/Krzycho/Documents/lesio/zad6/zad6/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-cvsytcw4av

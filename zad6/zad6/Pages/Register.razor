@@ -1,0 +1,54 @@
+@page "/Register"
+@using zad6.Services
+@using System.ComponentModel.DataAnnotations
+@inject IAuthService authService
+@inject NavigationManager navigationManager
+<h3>Register</h3>
+
+<EditForm Model="@Model" OnValidSubmit="OnSubmit">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <ValidationSummary></ValidationSummary>
+    <label class="form-label">Email</label>
+    <InputText class="form-control" @bind-Value="Model.Email" type="text"/>
+    <label class="form-label">Username</label>
+    <InputText class="form-control" @bind-Value="Model.Username" type="text"/>
+    <label class="form-label">Password</label>
+    <InputText class="form-control" @bind-Value="Model.Password" type="password"/>
+    <label class="form-label">Repeat Password</label>
+    <InputText class="form-control" @bind-Value="Model.RepeatPassword" type="password"/>
+
+    <button class="btn btn-primary mt-5" type="submit">Register</button>
+</EditForm>
+<p>@Error</p>
+
+@code {
+    public RegisterModel Model { get; set; } = new ();
+    public string Error { get; set; }
+    
+    public async Task OnSubmit()
+    {
+        if (Model.Password != Model.RepeatPassword)
+        {
+            Error = "Passwords do not match";
+            return;
+        }
+        await authService.RegisterAsync(Model.Email, Model.Username, Model.Password);
+        navigationManager.NavigateTo("/");
+    }
+
+    public class RegisterModel
+    {
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+        [Required]
+        [MinLength(3)]
+        public string Username { get; set; }
+        [Required]
+        [MinLength(8)]
+        public string Password { get; set; }
+        [Required]
+        [MinLength(8)]
+        public string RepeatPassword { get; set; }
+    }
+}
