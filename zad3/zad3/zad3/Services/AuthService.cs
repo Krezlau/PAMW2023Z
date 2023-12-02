@@ -11,11 +11,12 @@ namespace zad3.Services;
 public class AuthService : IAuthService
 {
     private readonly UserManager<User> _userManager;
-    private readonly byte[] _secretKey = Encoding.ASCII.GetBytes("this is my custom Secret key for authentication");
+    private readonly byte[] _secretKey;
 
-    public AuthService(UserManager<User> userManager, SignInManager<User> signInManager, BooksDbContext context)
+    public AuthService(UserManager<User> userManager, IConfiguration configuration)
     {
         _userManager = userManager;
+        _secretKey = Encoding.ASCII.GetBytes(configuration.GetSection("Key").Value);
     }
 
     public async Task<AuthResponseDTO> LoginAsync(LoginRequestDTO loginRequestDTO)
@@ -33,7 +34,7 @@ public class AuthService : IAuthService
         return new AuthResponseDTO()
         {
             Token = GenerateJwtToken(user),
-            Username = user.Username,
+            Username = user.UserName,
             UserId = user.Id
         };
     }
@@ -59,25 +60,26 @@ public class AuthService : IAuthService
         return new AuthResponseDTO()
         {
             Token = GenerateJwtToken(newUser),
-            Username = newUser.Username,
+            Username = newUser.UserName,
             UserId = newUser.Id
         };
     }
 
-    public async Task ChangePasswordAsync(ChangePasswordRequestDTO changePasswordRequestDTO)
+    public async Task ChangePasswordAsync(ChangePasswordRequestDTO changePasswordRequestDTO, string token)
     {
-        User? user = await _userManager.FindByNameAsync(changePasswordRequestDTO.Username);
+        var userId = ReadUserIdFromToken(token);
+        User? user = await _userManager.FindByIdAsync(userId);
 
         if (user is null)
-            throw new ArgumentException($"User with username {changePasswordRequestDTO.Username} does not exist");
+            throw new ArgumentException($"User doesn't exist");
 
         var result = await _userManager.ChangePasswordAsync(user, changePasswordRequestDTO.OldPassword,
             changePasswordRequestDTO.NewPassword);
 
         if (!result.Succeeded)
-            throw new ArgumentException($"Could not change password for user {changePasswordRequestDTO.Username}");
+            throw new ArgumentException($"Could not change password.");
     }
-    
+
     private string GenerateJwtToken(User user)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
@@ -85,7 +87,7 @@ public class AuthService : IAuthService
         {
             Subject = new ClaimsIdentity(new[]
             {
-                new Claim(ClaimTypes.Name, user.Username),
+                new Claim(ClaimTypes.Name, user.UserName),
                 new Claim(ClaimTypes.NameIdentifier, user.Id)
             }),
             Expires = DateTime.UtcNow.AddDays(1),
@@ -94,5 +96,18 @@ public class AuthService : IAuthService
         };
         var token = tokenHandler.CreateToken(tokenDescriptor);
         return tokenHandler.WriteToken(token);
+    }
+
+    public string ReadUserIdFromToken(string token)
+    {
+        var tokenHandler = new JwtSecurityTokenHandler();
+        var jwtToken = tokenHandler.ReadJwtToken(token);
+        var userIdClaim = jwtToken.Claims.FirstOrDefault(c => c.Type == "nameid");
+
+        if (userIdClaim is null)
+        {
+            throw new Exception("Invalid access token.");
+        }
+        return userIdClaim.Value;
     }
 }

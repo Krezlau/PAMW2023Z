@@ -115,5 +115,6 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
                         Rating = 3.3 
                     }
                 });
+        base.OnModelCreating(modelBuilder);
     }
 }

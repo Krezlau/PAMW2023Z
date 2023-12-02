@@ -8,6 +8,4 @@ public class ChangePasswordRequestDTO
     public string OldPassword { get; set; }
     [Required]
     public string NewPassword { get; set; }
-    [Required]
-    public string Username { get; set; }
 }

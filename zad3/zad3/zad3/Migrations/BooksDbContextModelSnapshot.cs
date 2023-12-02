@@ -22,6 +22,139 @@ namespace zad3.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("AspNetRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RoleId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("RoleId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("AspNetUserTokens", (string)null);
+                });
+
             modelBuilder.Entity("zad3.Models.Book", b =>
                 {
                     b.Property<Guid>("Id")
@@ -56,7 +189,7 @@ namespace zad3.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("b5c1957c-4e2f-4fa6-86bb-4f1affb307de"),
+                            Id = new Guid("fd8cedf9-c437-4da3-90e7-dea0c95191a4"),
                             Author = "J.K. Rowling",
                             Rating = 4.5,
                             Synopsis = "Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling.",
@@ -64,7 +197,7 @@ namespace zad3.Migrations
                         },
                         new
                         {
-                            Id = new Guid("1e98c12e-7270-4396-bca4-96b79e9ecb49"),
+                            Id = new Guid("e212b3ea-b94c-483e-ad97-b2f58a9a16d1"),
                             Author = "J.R.R. Tolkien",
                             Rating = 5.0,
                             Synopsis = "The Lord of the Rings is an epic fantasy novel written by English author J. R. R. Tolkien.",
@@ -72,7 +205,7 @@ namespace zad3.Migrations
                         },
                         new
                         {
-                            Id = new Guid("55418966-489d-43f8-acb0-16d387e5da1e"),
+                            Id = new Guid("20514538-5886-44df-821a-58d62b6548db"),
                             Author = "J.R.R. Tolkien",
                             Rating = 5.0,
                             Synopsis = "The Hobbit, or There and Back Again is a children's fantasy novel by English author J. R. R. Tolkien.",
@@ -80,7 +213,7 @@ namespace zad3.Migrations
                         },
                         new
                         {
-                            Id = new Guid("8b114d65-5742-4d71-858e-35f57ef34d86"),
+                            Id = new Guid("53350723-1df0-49b1-8b72-165f8d1ce417"),
                             Author = "Dan Brown",
                             Rating = 3.8999999999999999,
                             Synopsis = "The Da Vinci Code is a 2003 mystery thriller novel by Dan Brown. It is Brown's second novel to include the character Robert Langdon: the first was his 2000 novel Angels & Demons.",
@@ -88,7 +221,7 @@ namespace zad3.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e6937dc0-b98f-4114-8d3b-48be886b72c4"),
+                            Id = new Guid("449fe47e-2f87-4934-bfe3-3b5e55cd0a1b"),
                             Author = "Dan Brown",
                             Rating = 4.7000000000000002,
                             Synopsis = "Angels & Demons is a 2000 bestselling mystery-thriller novel written by American author Dan Brown and published by Pocket Books and then by Corgi Books.",
@@ -96,7 +229,7 @@ namespace zad3.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d059416a-54e7-41b8-9bcf-15386abf5796"),
+                            Id = new Guid("309cb9e3-275a-4c35-99ba-f34649d2ab1c"),
                             Author = "Dan Brown",
                             Rating = 4.0999999999999996,
                             Synopsis = "The Lost Symbol is a 2009 novel written by American writer Dan Brown. It is a thriller set in Washington, D.C., after the events of The Da Vinci Code, and relies on Freemasonry for both its recurring theme and its major characters.",
@@ -104,7 +237,7 @@ namespace zad3.Migrations
                         },
                         new
                         {
-                            Id = new Guid("b68dcf1a-2ca6-4558-920a-e265bd83cd88"),
+                            Id = new Guid("6ca6a3b7-8688-4c1d-ae21-5680f6637ea5"),
                             Author = "Suzanne Collins",
                             Rating = 4.9000000000000004,
                             Synopsis = "The Hunger Games is a 2008 dystopian novel by the American writer Suzanne Collins. It is written in the voice of 16-year-old Katniss Everdeen, who lives in the future, post-apocalyptic nation of Panem in North America.",
@@ -112,7 +245,7 @@ namespace zad3.Migrations
                         },
                         new
                         {
-                            Id = new Guid("552ede80-1162-4c2b-9099-9fa3ca872e2c"),
+                            Id = new Guid("a0ca3b1a-d33c-4ccd-b36e-92e55c9cab5e"),
                             Author = "Suzanne Collins",
                             Rating = 2.5,
                             Synopsis = "Catching Fire is a 2009 science fiction young adult novel by the American novelist Suzanne Collins, the second book in The Hunger Games series.",
@@ -120,7 +253,7 @@ namespace zad3.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e8d8c843-d7cb-4e2f-9e04-ab97aa1cc442"),
+                            Id = new Guid("70c70253-2176-4909-9460-735ffcc6ac09"),
                             Author = "Suzanne Collins",
                             Rating = 4.7000000000000002,
                             Synopsis = "Mockingjay is a 2010 science fiction novel by American author Suzanne Collins. It is the last installment of The Hunger Games, following 2008's The Hunger Games and 2009's Catching Fire.",
@@ -128,12 +261,128 @@ namespace zad3.Migrations
                         },
                         new
                         {
-                            Id = new Guid("6ef8a11b-8252-4062-b37e-8282d4a951e1"),
+                            Id = new Guid("48ed4a88-5c05-4caf-b140-e2270c644ca9"),
                             Author = "Andy Weir",
                             Rating = 3.2999999999999998,
                             Synopsis = "The Martian is a 2011 science fiction novel written by Andy Weir. It was his debut novel under his own name. It was originally self-published in 2011; Crown Publishing purchased the rights and re-released it in 2014.",
                             Title = "The Martian"
                         });
+                });
+
+            modelBuilder.Entity("zad3.Models.User", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.HasOne("zad3.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.HasOne("zad3.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("zad3.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.HasOne("zad3.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

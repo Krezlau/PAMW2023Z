@@ -6,5 +6,6 @@ public interface IAuthService
 {
     Task<AuthResponseDTO> LoginAsync(LoginRequestDTO loginRequestDTO);
     Task<AuthResponseDTO> RegisterAsync(RegisterRequestDTO registerRequestDTO);
-    Task ChangePasswordAsync(ChangePasswordRequestDTO changePasswordRequestDTO);
+    Task ChangePasswordAsync(ChangePasswordRequestDTO changePasswordRequestDTO, string token);
+    string ReadUserIdFromToken(string token);
 }
