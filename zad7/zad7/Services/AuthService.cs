@@ -1,4 +1,7 @@
-﻿namespace zad7.Services;
+﻿using System.Text.Json;
+using zad7.Models;
+
+namespace zad7.Services;
 
 public class AuthService : IAuthService
 {
@@ -8,16 +11,60 @@ public class AuthService : IAuthService
     public string? UserId { get; set; }
     public async Task<string?> LoginAsync(string email, string password)
     {
-        throw new NotImplementedException();
+        using var client = new HttpClient();
+        
+        var loginRequest = new LoginRequestDTO() { Email = email, Password = password };
+        var body = new StringContent(JsonSerializer.Serialize(loginRequest), System.Text.Encoding.UTF8, "application/json");
+        var response = await client.PostAsync("http://10.0.2.2:5044/api/auth", body);
+        
+        if (!response.IsSuccessStatusCode)
+            return await response.Content.ReadAsStringAsync();
+        
+        var responseBody = await response.Content.ReadAsStringAsync();
+        var authResponse = JsonSerializer.Deserialize<AuthResponseDTO>(responseBody, new JsonSerializerOptions() {PropertyNameCaseInsensitive = true});
+        
+        isLoggedIn = true;
+        Token = authResponse.Token;
+        Username = authResponse.Username;
+        UserId = authResponse.UserId;
+        
+        return null;
     }
 
     public async Task<string?> RegisterAsync(string email, string username, string password)
     {
-        throw new NotImplementedException();
+        using var client = new HttpClient();
+        
+        var registerRequest = new RegisterRequestDTO() { Email = email, Password = password, Username = username};
+        var body = new StringContent(JsonSerializer.Serialize(registerRequest), System.Text.Encoding.UTF8, "application/json");
+        var response = await client.PostAsync("http://10.0.2.2:5044/api/auth/register", body);
+        
+        if (!response.IsSuccessStatusCode)
+            return await response.Content.ReadAsStringAsync();
+        
+        var responseBody = await response.Content.ReadAsStringAsync();
+        var authResponse = JsonSerializer.Deserialize<AuthResponseDTO>(responseBody, new JsonSerializerOptions() {PropertyNameCaseInsensitive = true});
+        
+        isLoggedIn = true;
+        Token = authResponse.Token;
+        Username = authResponse.Username;
+        UserId = authResponse.UserId;
+        
+        return null;
     }
 
     public async Task<string?> ChangePasswordAsync(string oldPassword, string newPassword)
     {
-        throw new NotImplementedException();
+        using var client = new HttpClient();
+        
+        var changePasswordRequest = new ChangePasswordRequestDTO() { NewPassword = newPassword, OldPassword = oldPassword};
+        var body = new StringContent(JsonSerializer.Serialize(changePasswordRequest), System.Text.Encoding.UTF8, "application/json");
+        client.DefaultRequestHeaders.Add("Authorization", $"Bearer {Token}");
+        var response = await client.PostAsync("http://10.0.2.2:5044/api/auth/change-password", body);
+
+        if (!response.IsSuccessStatusCode)
+            return "Could not change password";
+        
+        return null;
     }
 }

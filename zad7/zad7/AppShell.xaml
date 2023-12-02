@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:zad7"
     Shell.FlyoutBehavior="Disabled"
     Title="zad7">
-
+    
     <ShellContent
         Title="Login"
         ContentTemplate="{DataTemplate local:LoginPage}"
