@@ -1,15 +1,17 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using zad3.Models;
 
 namespace zad3.Database;
 
-public class BooksDbContext : DbContext
+public class BooksDbContext : IdentityDbContext<User> 
 {
     public BooksDbContext(DbContextOptions<BooksDbContext> options) : base(options)
     {
     }
     
     public DbSet<Book> Books { get; set; }
+    public override DbSet<User> Users { get; set; }
     
 protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
