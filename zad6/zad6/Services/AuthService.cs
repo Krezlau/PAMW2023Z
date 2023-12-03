@@ -1,16 +1,42 @@
 using System.Text.Json;
+using Blazored.LocalStorage;
 using zad6.Models;
 
 namespace zad6.Services;
 
 public class AuthService : IAuthService
 {
+    private readonly ILocalStorageService _localStorage;
+
+    public AuthService(ILocalStorageService localStorage)
+    {
+        _localStorage = localStorage;
+    }
+
     public bool isLoggedIn { get; set; }
     public string? Token { get; set; }
     public string? Username { get; set; }
     public string? UserId { get; set; }
     
     public Action? AuthStateChanged { get; set; }
+    
+    private async Task StoreState()
+    {
+        await _localStorage.SetItemAsync("isLoggedIn", isLoggedIn);
+        await _localStorage.SetItemAsync("token", Token);
+        await _localStorage.SetItemAsync("username", Username);
+        await _localStorage.SetItemAsync("userId", UserId);
+    }
+    
+    public async Task LoadState()
+    {
+        isLoggedIn = await _localStorage.GetItemAsync<bool>("isLoggedIn");
+        Token = await _localStorage.GetItemAsync<string>("token");
+        Username = await _localStorage.GetItemAsync<string>("username");
+        UserId = await _localStorage.GetItemAsync<string>("userId");
+        
+        AuthStateChanged?.Invoke();
+    }
     
     public async Task<string?> LoginAsync(string email, string password)
     {
@@ -31,6 +57,8 @@ public class AuthService : IAuthService
         Username = authResponse.Username;
         UserId = authResponse.UserId;
         AuthStateChanged?.Invoke();
+        
+        await StoreState();
         
         return null;
     }
@@ -54,7 +82,9 @@ public class AuthService : IAuthService
         Username = authResponse.Username;
         UserId = authResponse.UserId;
         
-        //AuthStateChanged?.Invoke();
+        await StoreState();
+        
+        AuthStateChanged?.Invoke();
         
         return null;
     }
@@ -74,7 +104,7 @@ public class AuthService : IAuthService
         return null;
     }
     
-    public void Logout()
+    public async Task Logout()
     {
         isLoggedIn = false;
         Token = null;
@@ -82,5 +112,7 @@ public class AuthService : IAuthService
         UserId = null;
         
         AuthStateChanged?.Invoke();
+        
+        await StoreState();
     }
 }

@@ -1654,3 +1654,7 @@ C:\Users\Krzycho\Documents\lesio\zad6\zad6\obj\Debug\net7.0\zad6.dll
 C:\Users\Krzycho\Documents\lesio\zad6\zad6\obj\Debug\net7.0\refint\zad6.dll
 C:\Users\Krzycho\Documents\lesio\zad6\zad6\obj\Debug\net7.0\zad6.pdb
 C:\Users\Krzycho\Documents\lesio\zad6\zad6\obj\Debug\net7.0\ref\zad6.dll
+C:\Users\Krzycho\Documents\lesio\zad6\zad6\bin\Debug\net7.0\wwwroot\_framework\Blazored.LocalStorage.dll
+C:\Users\Krzycho\Documents\lesio\zad6\zad6\bin\Debug\net7.0\wwwroot\_framework\Blazored.LocalStorage.dll.gz
+C:\Users\Krzycho\Documents\lesio\zad6\zad6\bin\Debug\net7.0\Blazored.LocalStorage.dll
+C:\Users\Krzycho\Documents\lesio\zad6\zad6\obj\Debug\net7.0\compressed\qid42tvdep.gz

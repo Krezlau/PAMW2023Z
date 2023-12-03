@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0V4b7KJiw+45D/NQoGjshxfmSfIR2YWsTmosNjxWpoc=",
+  "Hash": "7RiHfqZA82DZTq20goxbKDYbrmsk66Re7cz+YZQZlcI=",
   "Source": "zad6",
   "BasePath": "/",
   "Mode": "Root",
@@ -53,6 +53,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Krzycho\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly\\7.0.14\\build\\net7.0\\blazor.webassembly.js"
+    },
+    {
+      "Identity": "C:\\Users\\Krzycho\\Documents\\lesio\\zad6\\zad6\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Blazored.LocalStorage.dll",
+      "SourceId": "zad6",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\Krzycho\\Documents\\lesio\\zad6\\zad6\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Blazored.LocalStorage.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "WasmResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\Krzycho\\.nuget\\packages\\blazored.localstorage\\4.4.0\\lib\\net7.0\\Blazored.LocalStorage.dll"
     },
     {
       "Identity": "C:\\Users\\Krzycho\\Documents\\lesio\\zad6\\zad6\\bin\\Debug\\net7.0\\wwwroot\\_framework\\dotnet.7.0.14.p9ka4t3845.js",
@@ -6779,6 +6798,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\Krzycho\\Documents\\lesio\\zad6\\zad6\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Runtime.Serialization.Json.dll"
+    },
+    {
+      "Identity": "C:\\Users\\Krzycho\\Documents\\lesio\\zad6\\zad6\\obj\\Debug\\net7.0\\compressed\\qid42tvdep.gz",
+      "SourceId": "zad6",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\Krzycho\\Documents\\lesio\\zad6\\zad6\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Blazored.LocalStorage.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\Krzycho\\Documents\\lesio\\zad6\\zad6\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Blazored.LocalStorage.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\Krzycho\\Documents\\lesio\\zad6\\zad6\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Blazored.LocalStorage.dll"
     },
     {
       "Identity": "C:\\Users\\Krzycho\\Documents\\lesio\\zad6\\zad6\\obj\\Debug\\net7.0\\compressed\\qmuxovubjx.gz",

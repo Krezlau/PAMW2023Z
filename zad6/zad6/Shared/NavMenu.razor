@@ -12,37 +12,50 @@
 
 <div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
     <nav class="flex-column">
+        @if (isLoggedIn)
+        {
+            <div class="nav-item px-3">
+                <p class="text-center text-white">Logged User: @Username</p>
+            </div>
+        }
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
                 <span class="oi oi-home" aria-hidden="true"></span> Home
             </NavLink>
         </div>
-        @if (authService.isLoggedIn)
+        @if (isLoggedIn)
         {
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="addbook">
-                <span class="oi oi-plus" aria-hidden="true"></span> Add Book
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="bookList">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Book List 
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <p class="text-center text-white">Logged User: @authService.Username</p>
-        </div>
-        <div class="nav-item px-3">
-            <button onclick="@Logout()">Logout</button>
-        </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="addbook">
+                    <span class="oi oi-plus" aria-hidden="true"></span> Add Book
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="bookList">
+                    <span class="oi oi-list-rich" aria-hidden="true"></span> Book List
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="changePassword">
+                    <span class="oi oi-list-rich" aria-hidden="true"></span> Change Password
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <button class="btn-primary" onclick="@Logout">Logout</button>
+            </div>
         }
         else
         {
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="Login">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Login 
-            </NavLink>
-        </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="Login">
+                    <span class="oi oi-list-rich" aria-hidden="true"></span> Login
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="Register">
+                    <span class="oi oi-list-rich" aria-hidden="true"></span> Register
+                </NavLink>
+            </div>
         }
     </nav>
     <div class="flex-row mx-auto justify-content-center">
@@ -77,7 +90,7 @@
     
     private async Task Logout()
     {
-        authService.Logout();
+        await authService.Logout();
     }
 
 }

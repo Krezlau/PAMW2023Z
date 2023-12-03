@@ -13,27 +13,30 @@
         <em>Loading...</em>
     </p>
 }
-@if (books.Count == 0)
-{
-    <p>
-        <em>No books found.</em>
-    </p>
-}
 else
 {
-    <ul class="list-group">
-        @foreach(var book in books)
-        {
-            <li>
-                <div class="my-3 d-flex gap-3">
-                    <h1>@book.Title</h1>
-                    <p class="my-auto">@book.Author</p>
-                    <p class="my-auto">@book.Rating</p>
-                </div>
-                <a href="bookList/@book.Id" class="btn btn-primary my-auto">Details</a>
-            </li>
-        }
-    </ul>
+    @if (books.Count == 0)
+    {
+        <p>
+            <em>No books found.</em>
+        </p>
+    }
+    else
+    {
+        <ul class="list-group">
+            @foreach(var book in books)
+            {
+                <li>
+                    <div class="my-3 d-flex gap-3">
+                        <h1>@book.Title</h1>
+                        <p class="my-auto">@book.Author</p>
+                        <p class="my-auto">@book.Rating</p>
+                    </div>
+                    <a href="bookList/@book.Id" class="btn btn-primary my-auto">Details</a>
+                </li>
+            }
+        </ul>
+    }
 }
 @code {
     private List<Book> books;

@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "SYQfG0iu0jymOBdiU7xcev5t2B4Y7v5haQ/Q9ipBerubyahaZGPPxGUrybKlcPcjO1DNEf1vnYSNreEU2sVpbg==",
+  "dgSpecHash": "/kWclTQlF5g4Wr9Flmp2DNYOcsnOwt4Pl7lkrKME9ZgHYe+goFcEE7gUDJCVEqC8rhgOqqSo45oIFe1UrH0SfA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Krzycho\\Documents\\lesio\\zad6\\zad6\\zad6.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Krzycho\\.nuget\\packages\\blazored.localstorage\\4.4.0\\blazored.localstorage.4.4.0.nupkg.sha512",
     "C:\\Users\\Krzycho\\.nuget\\packages\\microsoft.aspnetcore.authorization\\7.0.14\\microsoft.aspnetcore.authorization.7.0.14.nupkg.sha512",
     "C:\\Users\\Krzycho\\.nuget\\packages\\microsoft.aspnetcore.components\\7.0.14\\microsoft.aspnetcore.components.7.0.14.nupkg.sha512",
     "C:\\Users\\Krzycho\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\7.0.14\\microsoft.aspnetcore.components.analyzers.7.0.14.nupkg.sha512",
