@@ -17,9 +17,9 @@
     <label class="form-label">Repeat Password</label>
     <InputText class="form-control" @bind-Value="Model.RepeatPassword" type="password"/>
 
+    <p class="my-3">@Error</p>
     <button class="btn btn-primary mt-5" type="submit">Register</button>
 </EditForm>
-<p>@Error</p>
 
 @code {
     public RegisterModel Model { get; set; } = new ();
@@ -27,13 +27,17 @@
     
     public async Task OnSubmit()
     {
+        Error = "";
         if (Model.Password != Model.RepeatPassword)
         {
             Error = "Passwords do not match";
             return;
         }
-        await authService.RegisterAsync(Model.Email, Model.Username, Model.Password);
-        navigationManager.NavigateTo("/");
+        Error = await authService.RegisterAsync(Model.Email, Model.Username, Model.Password);
+        if (Error is null or "")
+        {
+            navigationManager.NavigateTo("/");
+        }
     }
 
     public class RegisterModel

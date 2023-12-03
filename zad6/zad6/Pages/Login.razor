@@ -1,6 +1,5 @@
 @page "/Login"
 @using zad6.Services
-@using System.ComponentModel.DataAnnotations
 @using zad6.Models
 @inject IAuthService authService
 @inject NavigationManager navigationManager
@@ -14,9 +13,9 @@
     <label class="form-label">Password</label>
     <InputText class="form-control" @bind-Value="Model.Password" type="password"/>
 
+    <p class="my-3">@Error</p>
     <button class="btn btn-primary mt-5" type="submit">Login</button>
 </EditForm>
-<p>@Error</p>
 
 @code {
     public LoginRequestDTO Model { get; set; } = new ();
@@ -24,8 +23,11 @@
     
     public async Task OnSubmit()
     {
-        await authService.LoginAsync(Model.Email, Model.Password);
-        navigationManager.NavigateTo("/");
+        Error = "";
+        Error = await authService.LoginAsync(Model.Email, Model.Password);
+        if (Error is null or "")
+        {
+            navigationManager.NavigateTo("/");
+        }
     }
-
 }
